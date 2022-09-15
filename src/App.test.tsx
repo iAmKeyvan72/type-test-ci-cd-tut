@@ -5,6 +5,6 @@ import App from './App';
 describe('tests the App root component', () => {
   it('should render the awesome test', () => {
     render(<App />);
-    expect(screen.getByText(/Normalllll/)).toBeInTheDocument();
+    expect(screen.getByText(/Normal/)).toBeInTheDocument();
   });
 });
