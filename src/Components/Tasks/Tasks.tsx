@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CreateTask } from './CreateTask';
+import { TasksList } from './TasksList';
 
 export const Tasks: React.FC = () => {
   const [savedInputs, setSavedInputs] = useState<string[]>([]);
@@ -14,11 +15,7 @@ export const Tasks: React.FC = () => {
           })
         }
       />
-      <ul>
-        {savedInputs?.map((str, i) => (
-          <li key={str + i}>{str}</li>
-        ))}
-      </ul>
+      <TasksList list={savedInputs} />
     </div>
   );
 };
