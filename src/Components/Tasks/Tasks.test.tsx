@@ -1,14 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Tasks } from './Tasks';
 
-import App from './App';
-
-describe('tests the App root component', () => {
+describe('tests the Tasks root component', () => {
   it('should correctly display the created item on the screen', async () => {
     const user = userEvent.setup();
 
-    render(<App />);
+    render(<Tasks />);
     const itemDescription = screen.getByRole('textbox');
     const createButton = screen.getByRole('button');
 
@@ -29,7 +28,7 @@ describe('tests the App root component', () => {
 
   it('should not add empty item to the list', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(<Tasks />);
 
     const itemDescription = screen.getByRole('textbox');
     const createButton = screen.getByRole('button');
@@ -46,7 +45,7 @@ describe('tests the App root component', () => {
 
   it('should allow user to have similar name items', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(<Tasks />);
 
     const inputElement = screen.getByRole('textbox');
     const createButton = screen.getByRole('button');
