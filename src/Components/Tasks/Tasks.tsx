@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
-import { Button, Input } from '@mui/material';
+import { CreateTask } from './CreateTask';
 
-export const Tasks = () => {
-  const [userInput, setUserInput] = useState<string>('');
+export const Tasks: React.FC = () => {
   const [savedInputs, setSavedInputs] = useState<string[]>([]);
 
   return (
     <div>
-      <Input value={userInput} onChange={(e) => setUserInput(e.target.value)} />
-      <Button
-        onClick={() => {
-          if (userInput) {
-            setSavedInputs((prevList) => [...prevList, userInput]);
-            setUserInput('');
-          }
-        }}
-      >
-        Create
-      </Button>
-
+      <CreateTask
+        onSubmit={(title) =>
+          new Promise((res) => {
+            setSavedInputs((oldSaved) => [...oldSaved, title]);
+            res(undefined);
+          })
+        }
+      />
       <ul>
         {savedInputs?.map((str, i) => (
           <li key={str + i}>{str}</li>
