@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useTasks from '../../Hooks/useTasks';
 import { CreateTask } from './CreateTask';
 import { TasksList } from './TasksList';
 
 export const Tasks: React.FC = () => {
-  const [savedInputs, setSavedInputs] = useState<string[]>([]);
+  const { data, createTasks } = useTasks();
 
   return (
-    <div>
-      <CreateTask
-        onSubmit={(title) =>
-          new Promise((res) => {
-            setSavedInputs((oldSaved) => [...oldSaved, title]);
-            res(undefined);
-          })
-        }
-      />
-      <TasksList list={savedInputs} />
-    </div>
+    <>
+      <CreateTask onSubmit={(title) => createTasks(title)} />
+      <TasksList list={data} />
+    </>
   );
 };

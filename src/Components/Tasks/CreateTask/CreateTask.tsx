@@ -6,17 +6,17 @@ interface CreateTaskProps {
 }
 
 export const CreateTask: React.FC<CreateTaskProps> = ({ onSubmit }) => {
-  const [taskTitle, setTaskTitle] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
 
   return (
     <>
-      <Input value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} />
+      <Input value={title} onChange={(e) => setTitle(e.target.value)} />
       <Button
         onClick={async () => {
-          if (taskTitle) {
+          if (title) {
             try {
-              await onSubmit(taskTitle);
-              setTaskTitle('');
+              await onSubmit(title);
+              setTitle('');
             } catch (err) {
               console.log(err);
             }
